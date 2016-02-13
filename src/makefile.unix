@@ -146,9 +146,9 @@ OBJS= \
     obj/jh.o\
     obj/keccak.o\
     obj/skein.o \
-    obj/checkpointsync.o
+	obj/checkpointsync.o
 
-all: granited
+all: GraniteCoind
 
 #
 # LevelDB support
@@ -182,11 +182,11 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-granited: $(OBJS:obj/%=obj/%)
+GraniteCoind: $(OBJS:obj/%=obj/%)
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 clean:
-	-rm -f granited
+	-rm -f GraniteCoind
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj/build.h
